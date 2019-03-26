@@ -7,7 +7,7 @@
 
 
 
-    <!-- Green Fragment container -->
+    <!-- Contenedor del fragmento verde -->
     <FrameLayout
         android:id="@+id/green_fragment_container"
         android:tag="green"
@@ -16,7 +16,7 @@
         android:layout_weight="1"
         android:layout_marginBottom="16dp" />
 
-    <!-- Blue Fragment container -->
+    <!-- Contenedor del fragmento azul -->
     <FrameLayout
         android:id="@+id/blue_fragment_container"
         android:tag="blue"

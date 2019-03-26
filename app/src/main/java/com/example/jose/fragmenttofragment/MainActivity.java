@@ -15,16 +15,20 @@ public class MainActivity extends AppCompatActivity implements GreenFragment.OnG
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Añade fragmentos de forma dinámica a la actividad
+        // Añade fragmentos de forma dinámica a la actividad con el FragmentManager
         FragmentManager fragmentManager = getSupportFragmentManager();
 
+        // Se referencia al contenedor de fragment
        mBlueFragment = (BlueFragment) fragmentManager.findFragmentById(R.id.blue_fragment_container);
+
+       // Creación del objeto fragment si aun no ha sido creado.
         if (mBlueFragment == null) {
-            Log.d("fragmento","Crando fragmento azul");
+            Log.d("fragmento","Creando fragmento azul");
             mBlueFragment = new BlueFragment();
             fragmentManager.beginTransaction().add(R.id.blue_fragment_container, mBlueFragment).commit();
         }
 
+        // Igual para el otro fragmento, el verde
         mGreenFragment = (GreenFragment) fragmentManager.findFragmentById(R.id.green_fragment_container);
         if (mGreenFragment == null) {
             Log.d("fragmento","Crando fragmento verde");
@@ -34,11 +38,12 @@ public class MainActivity extends AppCompatActivity implements GreenFragment.OnG
 
     }
 
+    // Implementa método de la interface GreenFragment.OnGreenFragmentListener
     // La actividad recive un mensaje desde el fragmento verde
     // y se lo pasa al fragmento azul
     @Override
-    public void mensajeDesdeFragmentoVerde(String message) {
+    public void mensajeDesdeFragmentoVerde(String mensaje) {
 
-        mBlueFragment.youveGotMail(message);
+        mBlueFragment.tienesUnMensaje(mensaje);
     }
 }

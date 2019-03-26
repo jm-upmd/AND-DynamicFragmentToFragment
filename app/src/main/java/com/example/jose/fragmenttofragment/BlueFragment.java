@@ -2,6 +2,8 @@ package com.example.jose.fragmenttofragment;
 
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,14 +15,17 @@ public class BlueFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_blue, container, false);
-        mTextView = v.findViewById(R.id.textview);
-        return v;
+       return inflater.inflate(R.layout.fragment_blue, container, false);
     }
 
-    // This is a public method that the Activity can use to communicate
-    // directly with this Fragment
-    public void youveGotMail(String message) {
-        mTextView.setText(message);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mTextView = view.findViewById(R.id.textview);
+    }
+
+    // Método público que la aceividad puede llamar para comunicarse directamente con este fragment
+    public void tienesUnMensaje(String mensaje) {
+        mTextView.setText(mensaje);
     }
 }
